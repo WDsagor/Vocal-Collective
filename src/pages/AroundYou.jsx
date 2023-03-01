@@ -4,7 +4,6 @@ const AroundYou = () => {
     return (
         <div>
             AroundYou
-AroundYou
         </div>
     );
 };

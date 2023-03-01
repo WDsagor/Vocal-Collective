@@ -41,7 +41,7 @@ const Sidebar = () => {
       <div className="md:flex hidden flex-col w-[240px] py-10 px-4 bg-[#191624]">
         <div className=" text-center">
         <img src={logo} alt="logo" className="w-full h-16 object-contain" />
-        <h1 className=" text-white uppercase text-center">Vocal Collective</h1>
+        <h1 className=" text-white uppercase text-center font-semibold">Vocal Collective</h1>
         </div>
         <NavLinks />
       </div>
@@ -62,12 +62,12 @@ const Sidebar = () => {
       </div>
 
       <div
-        className={`absolute top-0 h-screen w-2/3 bg-gradient-to-tl from-white/10 to-[#483D8B] backdrop-blur-lg z-10 p-6 md:hidden smooth-transition ${
+        className={`absolute top-0 h-screen w-1/3 bg-gradient-to-tl from-white/10 to-[#483D8B] backdrop-blur-lg z-10 p-6 md:hidden smooth-transition ${
           mobileMenuOpen ? "left-0" : "-left-full"
         }`}>
         <div >
         <img src={logo} alt="logo" className="w-full h-16 object-contain" />
-        <h1 className=" text-white">Vocal Collective</h1>
+        <h1 className="text-white uppercase text-center">Vocal Collective</h1>
         </div>
         <NavLinks handleClick={() => setMobileMenuOpen(false)} />
       </div>

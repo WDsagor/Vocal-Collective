@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Share from "../components/Share";
-import  { Discover, SearchArea, TopArtists, TopCharts } from "../pages";
+import  { AroundYou, Discover, TopArtists, TopCharts } from "../pages";
+
 
 export const routes = createBrowserRouter([
   {
@@ -13,7 +14,7 @@ export const routes = createBrowserRouter([
       },
       {
         path: "around-you",
-        element: <SearchArea />,
+        element: <AroundYou />,
       },
       {
         path: "top-artists",
