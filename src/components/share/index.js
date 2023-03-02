@@ -1,4 +1,4 @@
-import Main from "./Main";
 import Loading from "./Loading";
+import Error from "./Error";
 
-export { Main, Loading };
+export { Error, Loading };
