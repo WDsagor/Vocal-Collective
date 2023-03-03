@@ -11,8 +11,10 @@ const Discover = () => {
   const { activeSong, isPlaying } = useSelector((state) => state.player);
   const {data, isFetching, error} = useGetTwoHundresSongQuery() 
   const gentitle = "Pop";
-  if(isFetching) return <Loading/>
+  if(isFetching) return <Loading title="Loading songs..."/>
   if(error) return <DataError/>
+  // console.log(data[0]?.trackMetadata)
+  // console.log(activeSong)
   return (
        <div className='flex flex-col'>
       <div className='w-full flex justify-between items-center sm:flex-row flex-col mt-4 mb-10'>
@@ -29,7 +31,6 @@ const Discover = () => {
           <SongCard
           key={index}
           song= {song}
-          data={data}
           index={index}
           isPlaying={isPlaying}
           activeSong={activeSong}

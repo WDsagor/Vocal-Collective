@@ -4,22 +4,22 @@ import { Link } from 'react-router-dom';
 import { playPause, setActiveSong } from '../redux/features/playerSlice';
 import PlayPause from './PlayPush'
 
-const SongCard = ({song,isPlaying, activeSong, index}) => {
+const SongCard = ({song, isPlaying, activeSong, index}) => {
   const dispatch = useDispatch();
-  console.log(song?.trackMetadata?.artists)
-  // const ${activeSong?.title === song.title ? 'flex bg-black bg-opacity-70' : 'hidden'}
+  // console.log(song?.trackMetadata?.trackName)
+  // console.log(activeSong)
   const handlePauseClick = () => {
     dispatch(playPause(false));
   };
 
   const handlePlayClick = () => {
-    dispatch(setActiveSong({ song, index }));
+    dispatch(setActiveSong({ song, index}));
     dispatch(playPause(true));
   };
   return (
     <div className="flex flex-col w-[250px] p-4 bg-white/5 bg-opacity-80 backdrop-blur-sm animate-slideup rounded-lg cursor-pointer">
       <div className="relative w-full h-56 group">
-        <div className={`absolute inset-0 justify-center items-center bg-black bg-opacity-50 group-hover:flex ${activeSong?.title === song.title ? 'flex bg-black bg-opacity-70' : 'hidden'}`}>
+        <div className={`absolute inset-0 justify-center items-center bg-black bg-opacity-50 group-hover:flex ${activeSong?.trackMetadata?.trackName === song.trackMetadata?.trackName ? 'flex bg-black bg-opacity-70' : 'hidden'}`}>
           <PlayPause
             isPlaying={isPlaying}
             activeSong={activeSong}
@@ -39,8 +39,8 @@ const SongCard = ({song,isPlaying, activeSong, index}) => {
         </p>
         <p className="text-sm truncate text-gray-300 mt-1">
           <Link to={'/'}>
-            {/* {song?.trackMetadata?.artists?.map((name, i)=><span key={i}>{name}</span>)} */}
-            {song?.trackMetadata?.artists[0]?.name}
+           
+            {song?.trackMetadata?.artists?.map((artist, i)=><span key={i}>{artist?.name}<br/></span>)}
           </Link>
         </p>
       </div>

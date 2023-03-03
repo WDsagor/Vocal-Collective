@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
-  currentSong: [],
+  currentSongs: [],
   currentIndex: 0,
   isActive: false,
   isPlaying: false,
@@ -14,50 +14,38 @@ const playerSlice = createSlice({
   reducers: {
     setActiveSong: (state, action) => {
       state.activeSong = action.payload.song;
-
-      if (action.payload?.data?.tracks?.hits) {
-        state.currentSongs = action.payload.data.tracks.hits;
-      } else if (action.payload?.data?.properties) {
-        state.currentSongs = action.payload?.data?.tracks;
-      } else {
-        state.currentSongs = action.payload.data;
+      if (action.payload.song) {
+        state.currentSongs = action.payload.song.trackMetadata.trackUri;
       }
-
-      state.currentIndex = action.payload.i;
+      console.log(state.currentSongs);
+      state.currentIndex = action.payload.index;
       state.isActive = true;
     },
-
     nextSong: (state, action) => {
-      if (state.currentSongs[action.payload]?.track) {
+      if (state.currentSongs[action.payload]?..trackMetadata.trackUri) {
         state.activeSong = state.currentSongs[action.payload]?.track;
       } else {
         state.activeSong = state.currentSongs[action.payload];
       }
-
       state.currentIndex = action.payload;
       state.isActive = true;
     },
-
     prevSong: (state, action) => {
       if (state.currentSongs[action.payload]?.track) {
         state.activeSong = state.currentSongs[action.payload]?.track;
       } else {
         state.activeSong = state.currentSongs[action.payload];
       }
-
       state.currentIndex = action.payload;
       state.isActive = true;
     },
-
     playPause: (state, action) => {
       state.isPlaying = action.payload;
     },
-
-    selectCountry: (state, action) => {
-      state.country = action.payload;
-    },
+    // selectCountry: (state, action) => {
+    //   state.country = action.payload;
+    // },
   },
 });
-export const { nextSong, playPause, prevSong, setActiveSong } =
-  playerSlice.actions;
+export const { playPause, setActiveSong } = playerSlice.actions;
 export default playerSlice.reducer;
