@@ -1,10 +1,18 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 import {genres} from "../assets/index"
+import DataError from '../components/share/DataError';
+import Loading from '../components/share/Loading';
+import { useGetTwoHundresSongQuery } from '../redux/services/spotifyApi';
 import {SongCard} from './../components';
 
 
 const Discover = () => {
+  const { activeSong, isPlaying } = useSelector((state) => state.player);
+  const {data, isFetching, error} = useGetTwoHundresSongQuery() 
   const gentitle = "Pop";
+  if(isFetching) return <Loading/>
+  if(error) return <DataError/>
   return (
        <div className='flex flex-col'>
       <div className='w-full flex justify-between items-center sm:flex-row flex-col mt-4 mb-10'>
@@ -17,12 +25,14 @@ const Discover = () => {
         </select>
         </div> 
         <div className='flex flex-wrap sm:justify-start justify-center gap-8'>
-          {[0,1,2,3,4,5,6,7,8,9].map((song, index)=>(
-
+          {data.map((song, index)=>(
           <SongCard
           key={index}
           song= {song}
+          data={data}
           index={index}
+          isPlaying={isPlaying}
+          activeSong={activeSong}
           />
           ))}
         </div>

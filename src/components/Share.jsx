@@ -2,6 +2,7 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { SearchArea } from '../pages';
 import Sidebar from './SideBar';
+import TopPlayArea from './TopPlayArea';
 
 
 
@@ -21,7 +22,7 @@ const Share = () => {
            
           </div>
           <div className="xl:sticky relative top-0 h-fit">
-            {/* <TopPlay /> */}
+            <TopPlayArea />
           </div>
         </div>
       </div>

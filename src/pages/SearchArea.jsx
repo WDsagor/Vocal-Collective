@@ -15,7 +15,7 @@ import { FiSearch } from 'react-icons/fi';
     navigate(`/search/${searchTerm}`);
   };
   return (
-    <form onSubmit={handleSubmit} autoComplete="off" className="p-2 text-gray-400 focus-within:text-gray-600 shadow-md shadow-slate-500">
+    <form onSubmit={handleSubmit} autoComplete="off" className="p-2 text-gray-400 focus-within:text-gray-600 shadow-md shadow-slate-800">
       <label htmlFor="search-field" className="sr-only">
         Search all files
       </label>
