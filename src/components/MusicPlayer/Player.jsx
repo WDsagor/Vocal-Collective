@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react'
 
 const Player =({ activeSong, isPlaying, volume, seekTime, onEnded, onTimeUpdate, onLoadedData, repeat }) => {
   const ref = useRef(null);
+  console.log(activeSong?.trackMetadata?.trackUri)
 
   if (ref.current) {
     if (isPlaying) {
@@ -20,7 +21,7 @@ const Player =({ activeSong, isPlaying, volume, seekTime, onEnded, onTimeUpdate,
 
   return (
     <audio
-      src={activeSong?.trackUri}
+      src={activeSong?.trackMetadata?.trackUri}
       ref={ref}
       loop={repeat}
       onEnded={onEnded}

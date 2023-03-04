@@ -1,10 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
 import Share from "../components/Share";
-import  { AroundYou, Discover, TopArtists, TopCharts } from "../pages";
+import  { AroundYou, ConnectSpotify, Discover, TopArtists, TopCharts } from "../pages";
 
 
 export const routes = createBrowserRouter([
   {
+   
     path: "/",
     element: <Share />,
     children: [
@@ -26,4 +27,8 @@ export const routes = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "/",
+    element: <ConnectSpotify />,
+  }
 ]);

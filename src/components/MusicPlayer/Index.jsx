@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import { playPause } from '../../redux/features/playerSlice';
 import Controls from './Controls';
 import Player from './Player';
 import Seekbar from './Seekbar';

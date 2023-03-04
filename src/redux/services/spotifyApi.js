@@ -7,7 +7,7 @@ import {
 export const spotifyApi = createApi({
   reducerPath: "spotifyApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://spotify81.p.rapidapi.com/",
+    baseUrl: "https://spotify81.p.rapidapi.com",
     prepareHeaders: (headers) => {
       headers.set(
         "X-RapidAPI-Key",
@@ -15,10 +15,13 @@ export const spotifyApi = createApi({
         "X-RapidAPI-Host",
         import.meta.env.VITE_GEO_API_KEY
       );
+      return headers;
     },
   }),
   endpoints: (builder) => ({
-    getTwoHundresSong: builder.query({ query: () => "top_200_tracks" }),
+    getTwoHundresSong: builder.query({
+      query: () => "/top_200_tracks",
+    }),
     getSingleTrak: builder.query({ query: (id) => `tracks?ids=${id}` }),
   }),
 });

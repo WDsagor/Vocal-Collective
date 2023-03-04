@@ -6,7 +6,7 @@ import PlayPause from './PlayPush'
 
 const SongCard = ({song, isPlaying, activeSong, index}) => {
   const dispatch = useDispatch();
-  // console.log(song?.trackMetadata?.trackName)
+  console.log(song?.data?.uri)
   // console.log(activeSong)
   const handlePauseClick = () => {
     dispatch(playPause(false));
