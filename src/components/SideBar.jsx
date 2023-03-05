@@ -2,20 +2,22 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import {
   HiOutlineHashtag,
-  HiOutlineHome,
   HiOutlineMenu,
   HiOutlinePhotograph,
   HiOutlineUserGroup,
 } from "react-icons/hi";
 import { RiCloseLine } from "react-icons/ri";
+import { CiLogout } from "react-icons/ci";
 
 import { logo } from "../assets";
+import { MdAlbum } from "react-icons/md";
 
 const links = [
-  { name: "Discover", to: "/", icon: HiOutlineHome },
+  { name: "Album", to: "/", icon: MdAlbum },
   { name: "Around You", to: "/around-you", icon: HiOutlinePhotograph },
   { name: "Top Artists", to: "/top-artists", icon: HiOutlineUserGroup },
   { name: "Top Charts", to: "/top-charts", icon: HiOutlineHashtag },
+  { name: "Log Out", to: "/top-charts", icon: CiLogout},
 ];
 
 const NavLinks = () => (

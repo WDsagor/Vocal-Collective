@@ -15,7 +15,7 @@ const playerSlice = createSlice({
   reducers: {
     setToken: (state, action) => {
       state.token = action.payload;
-      console.log(action.payload);
+      // console.log(action.payload);
     },
 
     setActiveSong: (state, action) => {
@@ -23,7 +23,7 @@ const playerSlice = createSlice({
       if (action.payload.song) {
         state.currentSongs = action.payload.song.trackMetadata.trackUri;
       }
-      console.log(state.currentSongs);
+      // console.log(state.currentSongs);
       state.currentIndex = action.payload.index;
       state.isActive = true;
     },

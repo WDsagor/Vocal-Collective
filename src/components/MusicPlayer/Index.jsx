@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { playPause } from '../../redux/features/playerSlice';
+import { useGetSingleTrakQuery } from '../../redux/services/spotifyApi';
 import Controls from './Controls';
 import Player from './Player';
 import Seekbar from './Seekbar';
@@ -16,6 +17,7 @@ const MusicPlayer = () => {
   const [repeat, setRepeat] = useState(false);
   const [shuffle, setShuffle] = useState(false);
   const dispatch = useDispatch();
+  const {data, isFetching, error} = useGetSingleTrakQuery() 
   
   useEffect(() => {
     if (currentSongs?.length) dispatch(playPause(true));

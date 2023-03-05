@@ -33,18 +33,15 @@ const scope =[
 
 
 }
-useEffect(() => {
-    const hash = window.location.hash;
-    
-    if (hash) {
-        const token = hash.substring(1).split("&")[0].split("=")[1];
-        console.log(token)
-      
-        dispatch(setToken (token));
-     
-    }
-    // document.title = "Spotify";
-  }, [dispatch]);
+const hash = window.location.hash;
+if (hash) {
+  const token = hash.substring(1).split("&")[0].split("=")[1];
+  localStorage.setItem("Bearer", token)
+}
+ useEffect(()=>{
+  const token = localStorage.getItem("Bearer")
+  dispatch(setToken (token));
+ },[dispatch])
   return (
     <div style={{
         backgroundImage: `url(${imagePaths[0].path})`,

@@ -3,22 +3,22 @@ import { useSelector } from 'react-redux';
 import {genres} from "../assets/index"
 import DataError from '../components/share/DataError';
 import Loading from '../components/share/Loading';
-import { useGetTwoHundresSongQuery } from '../redux/services/spotifyApi';
+import { useGet50AlbumQuery, useGetAlbumQuery } from '../redux/services/spotifyApi';
 import {SongCard} from './../components';
 
 
 const Discover = () => {
   const { activeSong, isPlaying } = useSelector((state) => state.player);
-  const {data, isFetching, error} = useGetTwoHundresSongQuery() 
+  const {data, isFetching, error} = useGet50AlbumQuery() 
   const gentitle = "Pop";
   if(isFetching) return <Loading title="Loading songs..."/>
-  if(error) return <DataError/>
-  // console.log(data[0]?.trackMetadata)
+  if(error) return <DataError message={error?.message}/>
+  console.log(data.albums?.items)
   // console.log(activeSong)
   return (
        <div className='flex flex-col'>
       <div className='w-full flex justify-between items-center sm:flex-row flex-col mt-4 mb-10'>
-        <h1 className='font-bold text-3xl text-white text-left'>Discover</h1>
+        <h1 className='font-bold text-3xl text-white'>50 Albums Available here !</h1>
         <select 
         onChange={()=>{}}
         value= ""
@@ -28,7 +28,7 @@ const Discover = () => {
         </div> 
         
         <div className='flex flex-wrap sm:justify-start justify-center gap-8'>
-          {data?.map((song, index)=>(
+          {data.albums?.items?.map((song, index)=>(
           <SongCard
           key={index}
           song= {song}

@@ -15,7 +15,7 @@ const Share = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     const hash = window.location.hash;
-    console.log(hash)
+    // console.log(hash)
 
     if (hash) {
       const token = hash.substring(1).split("&")[0].split("=")[1];

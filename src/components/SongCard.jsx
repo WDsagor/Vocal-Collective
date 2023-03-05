@@ -6,8 +6,7 @@ import PlayPause from './PlayPush'
 
 const SongCard = ({song, isPlaying, activeSong, index}) => {
   const dispatch = useDispatch();
-  console.log(song?.data?.uri)
-  // console.log(activeSong)
+  console.log(song)
   const handlePauseClick = () => {
     dispatch(playPause(false));
   };
@@ -28,20 +27,20 @@ const SongCard = ({song, isPlaying, activeSong, index}) => {
             handlePlay={handlePlayClick}
           />
         </div> 
-        <img alt="song_img" src={song?.trackMetadata?.displayImageUri} className="w-full h-full rounded-lg" />
+        <img alt="song_img" src={song?.images[0]?.url} className="w-full h-full rounded-lg" />
       </div>
 
       <div className="mt-4 flex flex-col">
         <p className="font-semibold text-lg text-white truncate">
           <Link to={`/songs/${song?.key}`}>
-            {song?.trackMetadata?.trackName}
+            {song?.name}
           </Link>
         </p>
-        <p className="text-sm truncate text-gray-300 mt-1">
-          <Link to={'/'}>
-           
-            {song?.trackMetadata?.artists?.map((artist, i)=><span key={i}>{artist?.name}<br/></span>)}
-          </Link>
+        <p className="text-sm truncate text-gray-300 mt-1 uppercase">
+        {song?.type}
+        </p>
+        <p className="text-xs truncate text-gray-300 mt-1">
+        {song?.release_date}
         </p>
       </div>
     </div>
